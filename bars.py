@@ -13,16 +13,16 @@ def load_data(file_path):
         return json.loads(file_data.read())
 
 
-def get_biggest_bar(info):
-    return max(info, key=lambda x: x['properties']['Attributes']['SeatsCount'])
+def get_biggest_bar(data_from_object):
+    return max(data_from_object, key=lambda x: x['properties']['Attributes']['SeatsCount'])
 
 
-def get_smallest_bar(info):
-    return min(info, key=lambda x: x['properties']['Attributes']['SeatsCount'])
+def get_smallest_bar(data_from_object):
+    return min(data_from_object, key=lambda x: x['properties']['Attributes']['SeatsCount'])
 
 
-def get_closest_bar(info, longitude, latitude):
-    return min(info, key=lambda x:
+def get_closest_bar(data_from_object, longitude, latitude):
+    return min(data_from_object, key=lambda x:
         math.sqrt((x['geometry']['coordinates'][0] - longitude)**2 +
                  (x['geometry']['coordinates'][1] - latitude)**2))
 
