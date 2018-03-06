@@ -27,14 +27,14 @@ def get_closest_bar(info, longitude, latitude):
                  (x['geometry']['coordinates'][1] - latitude)**2))
 
 
-def output(got_data):
+def give_output(data_about_bars):
     print('    Name: {}'
-          .format(got_data['properties']['Attributes']['Name']), '\n',
+          .format(data_about_bars['properties']['Attributes']['Name']), '\n',
           '   Number of seats: {}'
-          .format(got_data['properties']['Attributes']['SeatsCount']), '\n',
+          .format(data_about_bars['properties']['Attributes']['SeatsCount']), '\n',
           '   Coordinates: {}, {}'
-          .format(got_data['geometry']['coordinates'][0],
-                  got_data['geometry']['coordinates'][1]))
+          .format(data_about_bars['geometry']['coordinates'][0],
+                  data_about_bars['geometry']['coordinates'][1]))
 
 
 if __name__ == '__main__':
@@ -44,8 +44,8 @@ if __name__ == '__main__':
     except ValueError:
         sys.exit('Wrong coordinate!')
     print('The BIGGEST bar is:')
-    output(get_biggest_bar(load_data(file_path)['features']))
+    give_output(get_biggest_bar(load_data(file_path)['features']))
     print('The SMALLEST bar is:')
-    output(get_smallest_bar(load_data(file_path)['features']))
+    give_output(get_smallest_bar(load_data(file_path)['features']))
     print('The CLOSEST bar is:')
-    output(get_closest_bar(load_data(file_path)['features'], longitude, latitude))
+    give_output(get_closest_bar(load_data(file_path)['features'], longitude, latitude))
