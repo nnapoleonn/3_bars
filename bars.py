@@ -12,21 +12,21 @@ def get_biggest_bar(bars):
     return max(
         bars,
         key=lambda x: x['properties']['Attributes']['SeatsCount']
-               )
+    )
 
 
 def get_smallest_bar(bars):
     return min(
         bars,
         key=lambda x: x['properties']['Attributes']['SeatsCount']
-               )
+    )
 
 
 def get_closest_bar(bars, longitude, latitude):
     return min(bars, key=lambda x: math.sqrt(
                    (x['geometry']['coordinates'][0] -longitude)**2 +
                    (x['geometry']['coordinates'][1] - latitude)**2)
-               )
+    )
 
 
 def give_output(data_about_bars):
@@ -39,7 +39,7 @@ def give_output(data_about_bars):
           '   Coordinates: {}, {}'
           .format(data_about_bars['geometry']['coordinates'][0],
                   data_about_bars['geometry']['coordinates'][1])
-          )
+    )
 
 
 if __name__ == '__main__':
@@ -53,14 +53,8 @@ if __name__ == '__main__':
         sys.exit('Wrong coordinate!')
     list_of_bars = load_data(file_path)['features']
     print('The BIGGEST bar is:')
-    give_output(
-        get_biggest_bar(
-            list_of_bars))
+    give_output(get_biggest_bar(list_of_bars))
     print('The SMALLEST bar is:')
-    give_output(
-        get_smallest_bar(
-            list_of_bars))
+    give_output(get_smallest_bar(list_of_bars))
     print('The CLOSEST bar is:')
-    give_output(
-        get_closest_bar(
-            list_of_bars, longitude, latitude))
+    give_output(get_closest_bar(list_of_bars, longitude, latitude))
