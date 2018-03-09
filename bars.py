@@ -12,19 +12,18 @@ def get_biggest_bar(bars):
     return max(
         bars,
         key=lambda x: x['properties']['Attributes']['SeatsCount']
-    )
+               )
 
 
 def get_smallest_bar(bars):
     return min(
         bars,
         key=lambda x: x['properties']['Attributes']['SeatsCount']
-    )
+               )
 
 
 def get_closest_bar(bars, longitude, latitude):
-    return min(bars,
-               key=lambda x: math.sqrt(
+    return min(bars, key=lambda x: math.sqrt(
                    (x['geometry']['coordinates'][0] -longitude)**2 +
                    (x['geometry']['coordinates'][1] - latitude)**2)
                )
