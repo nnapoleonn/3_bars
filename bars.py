@@ -24,8 +24,8 @@ def get_smallest_bar(bars):
 
 def get_closest_bar(bars, longitude, latitude):
     return min(bars, key=lambda x: math.sqrt(
-                   (x['geometry']['coordinates'][0] -longitude)**2 +
-                   (x['geometry']['coordinates'][1] - latitude)**2)
+        (x['geometry']['coordinates'][0] -longitude)**2 +
+        (x['geometry']['coordinates'][1] - latitude)**2)
     )
 
 
